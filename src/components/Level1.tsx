@@ -1,13 +1,14 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Box, ArrowRight, CheckCircle2, Shield } from 'lucide-react';
+import { Box, ArrowRight, CheckCircle2, Shield, ArrowLeft } from 'lucide-react';
 
 interface Level1Props {
   onComplete: () => void;
+  onBack: () => void;
   key?: string;
 }
 
-export const Level1 = ({ onComplete }: Level1Props) => {
+export const Level1 = ({ onComplete, onBack }: Level1Props) => {
   const [step, setStep] = useState<'explanation' | 'challenge' | 'success'>('explanation');
   const [isFragmented, setIsFragmented] = useState(false);
   const [placedFragments, setPlacedFragments] = useState<number[]>([]);
@@ -34,7 +35,13 @@ export const Level1 = ({ onComplete }: Level1Props) => {
   };
 
   return (
-    <div className="z-10 w-full max-w-4xl px-4 flex flex-col items-center">
+    <div className="z-10 w-full max-w-4xl px-4 flex flex-col items-center relative">
+      <button 
+        onClick={onBack}
+        className="mb-6 self-start flex items-center gap-2 text-slate-600 hover:text-accent-blue transition-colors uppercase text-[10px] font-black tracking-widest"
+      >
+        <ArrowLeft className="w-4 h-4" /> Voltar ao Menu
+      </button>
       <AnimatePresence mode="wait">
         {step === 'explanation' && (
           <motion.div
@@ -77,8 +84,8 @@ export const Level1 = ({ onComplete }: Level1Props) => {
             className="w-full flex flex-col items-center"
           >
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-2">Desafio Espacial</h3>
-              <p className="text-slate-400">
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">Desafio Espacial</h3>
+              <p className="text-slate-600 font-medium">
                 {!isFragmented 
                   ? "Arraste o satélite para dentro do foguete para enviá-lo à órbita." 
                   : "Arraste os pacotes de dados (fragmentos) para as aberturas do foguete."}
@@ -165,14 +172,17 @@ export const Level1 = ({ onComplete }: Level1Props) => {
                   <motion.div 
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-white border border-accent-blue text-accent-blue px-6 py-4 rounded-xl text-sm text-center max-w-[220px] shadow-2xl z-50"
+                    className="bg-white border-2 border-accent-blue text-accent-blue px-6 py-6 rounded-2xl text-sm text-center max-w-[300px] shadow-2xl z-50"
                   >
-                    <p className="font-bold mb-3 uppercase tracking-tighter">Erro: Grande demais!</p>
+                    <p className="font-black mb-2 uppercase tracking-tighter text-base">Capacidade máxima excedida</p>
+                    <p className="text-slate-600 font-medium mb-4 leading-tight">
+                      O compartimento de carga do foguete não suporta o tamanho total do satélite para lançamento. Você deve fragmentá-lo para conseguir lançar.
+                    </p>
                     <button 
                       onClick={handleFragment}
-                      className="w-full btn-primary py-2 text-xs"
+                      className="w-full btn-primary py-3 text-xs"
                     >
-                      FRAGMENTAR
+                      FRAGMENTAR SATÉLITE
                     </button>
                   </motion.div>
                 )}
@@ -236,7 +246,7 @@ export const Level1 = ({ onComplete }: Level1Props) => {
                 
                 {/* Launch Pad */}
                 <div className="h-6 w-80 bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 rounded-full mt-4 shadow-xl border-t-2 border-slate-500" />
-                <div className="text-[10px] font-bold text-slate-500 mt-2 uppercase tracking-widest">Plataforma de Lançamento 01</div>
+                <div className="text-[10px] font-bold text-slate-600 mt-2 uppercase tracking-widest">Plataforma de Lançamento 01</div>
               </div>
             </div>
           </motion.div>
@@ -254,10 +264,10 @@ export const Level1 = ({ onComplete }: Level1Props) => {
               transition={{ duration: 0.5 }}
               className="inline-block mb-6"
             >
-              <CheckCircle2 className="w-24 h-24 text-emerald-400" />
+              <CheckCircle2 className="w-24 h-24 text-emerald-500" />
             </motion.div>
-            <h2 className="text-4xl font-bold text-white mb-4">Parabéns!</h2>
-            <p className="text-xl text-slate-300 mb-8">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Parabéns!</h2>
+            <p className="text-xl text-slate-700 mb-8 font-medium">
               O satélite foi fragmentado e enviado com sucesso! <br/>
               Você liberou a primeira parte da mensagem.
             </p>

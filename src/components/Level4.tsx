@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Puzzle, CheckCircle2, MessageSquare, AlertTriangle, Keyboard, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Puzzle, CheckCircle2, MessageSquare, AlertTriangle, Keyboard, ArrowRight, ShieldCheck, ArrowLeft } from 'lucide-react';
 
 interface Level4Props {
   onComplete: () => void;
+  onBack: () => void;
   key?: string;
 }
 
@@ -67,7 +68,7 @@ const CHALLENGES: Challenge[] = [
   }
 ];
 
-export const Level4 = ({ onComplete }: Level4Props) => {
+export const Level4 = ({ onComplete, onBack }: Level4Props) => {
   const [step, setStep] = useState<'explanation' | 'regeneration' | 'challenge' | 'success'>('explanation');
   const [currentChallengeIdx, setCurrentChallengeIdx] = useState(0);
   const [verifiedIds, setVerifiedIds] = useState<number[]>([]);
@@ -146,7 +147,13 @@ export const Level4 = ({ onComplete }: Level4Props) => {
   };
 
   return (
-    <div className="z-10 w-full max-w-5xl px-4 flex flex-col items-center">
+    <div className="z-10 w-full max-w-5xl px-4 flex flex-col items-center relative">
+      <button 
+        onClick={onBack}
+        className="mb-6 self-start flex items-center gap-2 text-slate-600 hover:text-accent-blue transition-colors uppercase text-[10px] font-black tracking-widest"
+      >
+        <ArrowLeft className="w-4 h-4" /> Voltar ao Menu
+      </button>
       <AnimatePresence mode="wait">
         {step === 'explanation' && (
           <motion.div
@@ -188,8 +195,8 @@ export const Level4 = ({ onComplete }: Level4Props) => {
           >
             <div className="text-center mb-8">
               <div className="text-[10px] font-black text-accent-blue uppercase tracking-[4px] mb-2">Desafio {currentChallengeIdx + 1} de 5</div>
-              <h3 className="text-3xl font-black text-slate-800 mb-2 uppercase tracking-tighter">{currentChallenge.title}</h3>
-              <p className="text-slate-600">Encontre e corrija os fragmentos danificados.</p>
+              <h3 className="text-3xl font-black text-slate-900 mb-2 uppercase tracking-tighter">{currentChallenge.title}</h3>
+              <p className="text-slate-700 font-medium">Encontre e corrija os fragmentos danificados.</p>
             </div>
 
             <div className={`grid grid-cols-1 md:grid-cols-${currentChallenge.parts.length > 3 ? '2' : '3'} gap-6 w-full max-w-5xl`}>
@@ -272,8 +279,8 @@ export const Level4 = ({ onComplete }: Level4Props) => {
           >
             <div className="text-center mb-12">
               <div className="text-[10px] font-black text-accent-purple uppercase tracking-[4px] mb-2">Fase de Montagem</div>
-              <h3 className="text-3xl font-black text-slate-800 mb-2 uppercase tracking-tighter">Ordene os Fragmentos</h3>
-              <p className="text-slate-600">Coloque as partes regeneradas na sequência correta.</p>
+              <h3 className="text-3xl font-black text-slate-900 mb-2 uppercase tracking-tighter">Ordene os Fragmentos</h3>
+              <p className="text-slate-700 font-medium">Coloque as partes regeneradas na sequência correta.</p>
             </div>
 
             <div className={`grid grid-cols-1 md:grid-cols-${currentChallenge.parts.length > 3 ? '2' : '3'} gap-6 w-full max-w-5xl mb-12`}>
@@ -354,8 +361,8 @@ export const Level4 = ({ onComplete }: Level4Props) => {
             >
               <MessageSquare className="w-32 h-32 text-emerald-500" />
             </motion.div>
-            <h2 className="text-5xl font-black text-slate-800 mb-6 uppercase tracking-tighter">Último Fragmento Liberado!</h2>
-            <p className="text-2xl text-slate-600 mb-10 font-medium max-w-2xl mx-auto leading-relaxed">
+            <h2 className="text-5xl font-black text-slate-900 mb-6 uppercase tracking-tighter">Último Fragmento Liberado!</h2>
+            <p className="text-2xl text-slate-700 mb-10 font-medium max-w-2xl mx-auto leading-relaxed">
               Você regenerou todas as sequências e restaurou a integridade da rede! <br/>
               O último fragmento do Arquivo Perdido foi desbloqueado.
             </p>

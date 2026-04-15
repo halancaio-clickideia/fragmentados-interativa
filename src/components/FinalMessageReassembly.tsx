@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Puzzle, CheckCircle2, AlertTriangle, Trophy } from 'lucide-react';
+import { Puzzle, CheckCircle2, AlertTriangle, Trophy, ArrowLeft } from 'lucide-react';
 
 interface FinalMessageReassemblyProps {
   onComplete: () => void;
+  onBack: () => void;
   key?: string;
 }
 
@@ -14,7 +15,7 @@ const FINAL_PARTS = [
   { id: 4, text: "MÚLTIPLOS CAMINHOS" },
 ];
 
-export const FinalMessageReassembly = ({ onComplete }: FinalMessageReassemblyProps) => {
+export const FinalMessageReassembly = ({ onComplete, onBack }: FinalMessageReassemblyProps) => {
   const [order, setOrder] = useState<number[]>([]);
   const [shuffledParts, setShuffledParts] = useState<typeof FINAL_PARTS>([]);
   const [showError, setShowError] = useState(false);
@@ -45,17 +46,23 @@ export const FinalMessageReassembly = ({ onComplete }: FinalMessageReassemblyPro
   };
 
   return (
-    <div className="z-10 w-full max-w-5xl px-4 flex flex-col items-center">
+    <div className="z-10 w-full max-w-5xl px-4 flex flex-col items-center relative">
+      <button 
+        onClick={onBack}
+        className="mb-6 self-start flex items-center gap-2 text-slate-600 hover:text-accent-blue transition-colors uppercase text-[10px] font-black tracking-widest"
+      >
+        <ArrowLeft className="w-4 h-4" /> Voltar ao Menu
+      </button>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="glass-panel p-10 w-full max-w-4xl text-center"
       >
-        <Trophy className="w-16 h-16 text-yellow-400 mx-auto mb-6 animate-bounce" />
-        <h2 className="text-4xl font-black text-white mb-4 uppercase tracking-tighter">
+        <Trophy className="w-16 h-16 text-yellow-500 mx-auto mb-6 animate-bounce" />
+        <h2 className="text-4xl font-black text-slate-900 mb-4 uppercase tracking-tighter">
           O Arquivo foi Desbloqueado!
         </h2>
-        <p className="text-xl text-slate-300 mb-10">
+        <p className="text-xl text-slate-700 mb-10 font-medium">
           Você recuperou o último fragmento. Agora, organize a mensagem original para completar o resgate do Arquivo Perdido.
         </p>
 

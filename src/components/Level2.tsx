@@ -1,9 +1,10 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Shield, CheckCircle2, AlertTriangle, Clock, Zap, ArrowRight } from 'lucide-react';
+import { Shield, CheckCircle2, AlertTriangle, Clock, Zap, ArrowRight, ArrowLeft } from 'lucide-react';
 
 interface Level2Props {
   onComplete: () => void;
+  onBack: () => void;
   key?: string;
 }
 
@@ -72,7 +73,7 @@ const CHALLENGES: Challenge[] = [
   }
 ];
 
-export const Level2 = ({ onComplete }: Level2Props) => {
+export const Level2 = ({ onComplete, onBack }: Level2Props) => {
   const [step, setStep] = useState<'explanation' | 'challenge' | 'success'>('explanation');
   const [currentChallenge, setCurrentChallenge] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -190,7 +191,13 @@ export const Level2 = ({ onComplete }: Level2Props) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[600px] w-full max-w-6xl px-4 py-8">
+    <div className="flex flex-col items-center justify-center min-h-[600px] w-full max-w-6xl px-4 py-8 relative">
+      <button 
+        onClick={onBack}
+        className="mb-6 self-start flex items-center gap-2 text-slate-600 hover:text-accent-blue transition-colors uppercase text-[10px] font-black tracking-widest"
+      >
+        <ArrowLeft className="w-4 h-4" /> Voltar ao Menu
+      </button>
       <AnimatePresence mode="wait">
         {step === 'explanation' && (
           <motion.div
@@ -298,7 +305,7 @@ export const Level2 = ({ onComplete }: Level2Props) => {
                     {/* Labels */}
                     <div className="relative z-10 flex items-center gap-3">
                       <div className={`w-3 h-3 rounded-full ${tun.color} animate-pulse`} />
-                      <span className="font-black text-slate-700 tracking-tighter text-sm uppercase">{tun.label}</span>
+                      <span className="font-black text-slate-800 tracking-tighter text-sm uppercase">{tun.label}</span>
                     </div>
 
                     {/* Dropped Packets Visual */}
@@ -421,12 +428,12 @@ export const Level2 = ({ onComplete }: Level2Props) => {
                         <div className="relative w-80 h-16 bg-white border-4 border-green-600 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
                           <div className="absolute inset-0 bg-green-600/5" />
                           <div className="flex items-center gap-3">
-                            <Shield className="w-6 h-6 text-green-600" />
-                            <span className="font-black text-green-700 tracking-tighter">PACOTE CONSOLIDADO: {challenge.fileSize} BYTES</span>
+                            <Shield className="w-6 h-6 text-green-700" />
+                            <span className="font-black text-green-800 tracking-tighter">PACOTE CONSOLIDADO: {challenge.fileSize} BYTES</span>
                           </div>
                         </div>
                       </div>
-                      <p className="text-sm font-bold text-slate-400 uppercase tracking-widest animate-pulse">Selecione uma fragmentação acima</p>
+                      <p className="text-sm font-bold text-slate-600 uppercase tracking-widest animate-pulse">Selecione uma fragmentação acima</p>
                     </motion.div>
                   ) : (
                     <motion.div
@@ -582,8 +589,8 @@ export const Level2 = ({ onComplete }: Level2Props) => {
             <div className="w-24 h-24 bg-success/20 text-success rounded-full flex items-center justify-center mx-auto mb-8">
               <CheckCircle2 className="w-16 h-16" />
             </div>
-            <h2 className="text-4xl font-bold mb-4 text-slate-800">Missão Cumprida!</h2>
-            <p className="text-xl text-text-muted mb-10 font-medium">
+            <h2 className="text-4xl font-bold mb-4 text-slate-900">Missão Cumprida!</h2>
+            <p className="text-xl text-slate-700 mb-10 font-medium">
               Você dominou a arte da fragmentação inteligente. Os pacotes agora viajam de forma eficiente pela rede, respeitando os limites de cada caminho!
             </p>
             <div className="bg-slate-100 p-8 rounded-3xl mb-10 border border-slate-200 shadow-inner">

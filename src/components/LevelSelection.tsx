@@ -21,7 +21,7 @@ export const LevelSelection = ({ progress, onSelectLevel }: LevelSelectionProps)
       <motion.h2 
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="text-4xl font-bold text-center mb-12 uppercase tracking-[4px]"
+        className="text-4xl font-bold text-center mb-12 uppercase tracking-[4px] text-slate-900"
       >
         Seletor de Fases
       </motion.h2>
@@ -29,7 +29,7 @@ export const LevelSelection = ({ progress, onSelectLevel }: LevelSelectionProps)
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {levels.map((level, index) => {
           const levelData = progress.levels[level.id];
-          const isUnlocked = true; // Forçado para teste: levelData.unlocked;
+          const isUnlocked = levelData.unlocked;
           const isCompleted = levelData.completed;
 
           return (
@@ -58,10 +58,10 @@ export const LevelSelection = ({ progress, onSelectLevel }: LevelSelectionProps)
                   <div className="text-[11px] uppercase tracking-widest text-accent-blue mb-1">
                     Fase 0{index + 1}
                   </div>
-                  <h3 className={`text-2xl font-bold ${isUnlocked ? 'text-slate-900' : 'text-text-muted'}`}>
+                  <h3 className={`text-2xl font-bold ${isUnlocked ? 'text-slate-900' : 'text-slate-500'}`}>
                     {level.title}
                   </h3>
-                  <p className={`text-xs ${isUnlocked ? 'text-slate-500' : 'text-slate-400'}`}>
+                  <p className={`text-xs font-medium ${isUnlocked ? 'text-slate-600' : 'text-slate-500'}`}>
                     {level.description}
                   </p>
                   {isCompleted && (

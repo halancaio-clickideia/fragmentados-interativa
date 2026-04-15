@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Network, Cpu, ArrowRight, CheckCircle2, AlertTriangle, Zap, Clock } from 'lucide-react';
+import { Network, Cpu, ArrowRight, CheckCircle2, AlertTriangle, Zap, Clock, ArrowLeft } from 'lucide-react';
 
 interface Level3Props {
   onComplete: () => void;
+  onBack: () => void;
   key?: string;
 }
 
@@ -51,7 +52,7 @@ const baseConnections: Connection[] = [
   { from: 8, to: 9, isBlocked: false, speed: 'fast' },
 ];
 
-export const Level3 = ({ onComplete }: Level3Props) => {
+export const Level3 = ({ onComplete, onBack }: Level3Props) => {
   const [step, setStep] = useState<'explanation' | 'challenge' | 'success'>('explanation');
   const [currentSubChallenge, setCurrentSubChallenge] = useState(1);
   const [currentNode, setCurrentNode] = useState(0);
@@ -176,7 +177,13 @@ export const Level3 = ({ onComplete }: Level3Props) => {
   };
 
   return (
-    <div className="z-10 w-full max-w-5xl px-4 flex flex-col items-center">
+    <div className="z-10 w-full max-w-5xl px-4 flex flex-col items-center relative">
+      <button 
+        onClick={onBack}
+        className="mb-6 self-start flex items-center gap-2 text-slate-600 hover:text-accent-blue transition-colors uppercase text-[10px] font-black tracking-widest"
+      >
+        <ArrowLeft className="w-4 h-4" /> Voltar ao Menu
+      </button>
       <AnimatePresence mode="wait">
         {step === 'explanation' && (
           <motion.div
@@ -217,8 +224,8 @@ export const Level3 = ({ onComplete }: Level3Props) => {
             className="w-full flex flex-col items-center"
           >
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-slate-800 mb-2">Traçando a Rota ({currentSubChallenge}/5)</h3>
-              <p className="text-slate-600">Encontre o caminho mais eficiente. Cuidado com os bloqueios ocultos!</p>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">Traçando a Rota ({currentSubChallenge}/5)</h3>
+              <p className="text-slate-700 font-medium">Encontre o caminho mais eficiente. Cuidado com os bloqueios ocultos!</p>
               
               {/* Progress Bar */}
               <div className="w-full max-w-xs mx-auto mt-4 h-2 bg-slate-200 rounded-full overflow-hidden">
@@ -298,7 +305,7 @@ export const Level3 = ({ onComplete }: Level3Props) => {
                      <Network className="w-5 h-5" />}
                     
                     {/* Label */}
-                    <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-black uppercase tracking-tighter text-slate-500 whitespace-nowrap">
+                    <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-black uppercase tracking-tighter text-slate-700 whitespace-nowrap">
                       {node.label}
                     </span>
                   </motion.button>
@@ -349,12 +356,12 @@ export const Level3 = ({ onComplete }: Level3Props) => {
               {/* Speed Legend */}
               <div className="absolute bottom-4 left-4 flex flex-col gap-2 bg-white/80 p-3 rounded-xl border border-slate-200">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-1 bg-slate-400" />
-                  <span className="text-[10px] font-black text-slate-500 uppercase">Rápido</span>
+                  <div className="w-6 h-1 bg-slate-500" />
+                  <span className="text-[10px] font-black text-slate-700 uppercase">Rápido</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-1 border-b-2 border-dashed border-slate-400" />
-                  <span className="text-[10px] font-black text-slate-500 uppercase">Lento</span>
+                  <div className="w-6 h-1 border-b-2 border-dashed border-slate-500" />
+                  <span className="text-[10px] font-black text-slate-700 uppercase">Lento</span>
                 </div>
               </div>
             </div>
@@ -384,8 +391,8 @@ export const Level3 = ({ onComplete }: Level3Props) => {
             >
               <Network className="w-24 h-24 text-emerald-500" />
             </motion.div>
-            <h2 className="text-4xl font-bold text-slate-800 mb-4 uppercase tracking-tighter">Rota Concluída!</h2>
-            <p className="text-xl text-slate-600 mb-8 font-medium">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4 uppercase tracking-tighter">Rota Concluída!</h2>
+            <p className="text-xl text-slate-700 mb-8 font-medium">
               Os pacotes encontraram o melhor caminho através da rede. <br/>
               Você liberou a terceira parte da mensagem.
             </p>

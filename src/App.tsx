@@ -82,23 +82,23 @@ export default function App() {
         )}
 
         {gameState === 'level1' && (
-          <Level1 key="level1" onComplete={() => handleLevelComplete('level1')} />
+          <Level1 key="level1" onComplete={() => handleLevelComplete('level1')} onBack={() => setGameState('menu')} />
         )}
 
         {gameState === 'level2' && (
-          <Level2 key="level2" onComplete={() => handleLevelComplete('level2')} />
+          <Level2 key="level2" onComplete={() => handleLevelComplete('level2')} onBack={() => setGameState('menu')} />
         )}
 
         {gameState === 'level3' && (
-          <Level3 key="level3" onComplete={() => handleLevelComplete('level3')} />
+          <Level3 key="level3" onComplete={() => handleLevelComplete('level3')} onBack={() => setGameState('menu')} />
         )}
 
         {gameState === 'level4' && (
-          <Level4 key="level4" onComplete={() => handleLevelComplete('level4')} />
+          <Level4 key="level4" onComplete={() => handleLevelComplete('level4')} onBack={() => setGameState('menu')} />
         )}
 
         {gameState === 'final_reassembly' && (
-          <FinalMessageReassembly key="final_reassembly" onComplete={() => setGameState('final')} />
+          <FinalMessageReassembly key="final_reassembly" onComplete={() => setGameState('final')} onBack={() => setGameState('menu')} />
         )}
 
         {gameState === 'final' && (
@@ -108,36 +108,36 @@ export default function App() {
             animate={{ opacity: 1, scale: 1 }}
             className="glass-panel p-12 text-center z-10 max-w-2xl mx-4"
           >
-            <Trophy className="w-24 h-24 text-yellow-400 mx-auto mb-6" />
-            <h2 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-orange-500">
+            <Trophy className="w-24 h-24 text-yellow-500 mx-auto mb-6" />
+            <h2 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 to-orange-600">
               ARQUIVO RESGATADO!
             </h2>
-            <p className="text-xl text-slate-300 mb-8">
+            <p className="text-xl text-slate-700 mb-8 font-medium">
               Você dominou os conceitos de transmissão de dados e restaurou a mensagem original:
             </p>
             
-            <div className="bg-emerald-500/10 border-2 border-emerald-500/30 p-8 rounded-[32px] mb-10 shadow-inner">
-              <p className="text-2xl md:text-3xl font-black text-emerald-400 tracking-tighter leading-tight uppercase">
+            <div className="bg-emerald-50 border-4 border-emerald-200 p-8 rounded-[32px] mb-10 shadow-inner">
+              <p className="text-2xl md:text-3xl font-black text-emerald-700 tracking-tighter leading-tight uppercase">
                 "OS DADOS SÃO FRAGMENTADOS E ENVIADOS ATRAVÉS DE MÚLTIPLOS CAMINHOS"
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 text-left">
-              <div className="bg-slate-800/50 p-4 rounded-2xl border border-slate-700">
+              <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
                 <p className="font-black text-accent-blue text-xs uppercase tracking-widest mb-1">01. Fragmentação</p>
-                <p className="text-sm text-slate-300">Divisão do arquivo em pacotes para o transporte.</p>
+                <p className="text-sm text-slate-700 font-medium">Divisão do arquivo em pacotes para o transporte.</p>
               </div>
-              <div className="bg-slate-800/50 p-4 rounded-2xl border border-slate-700">
+              <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
                 <p className="font-black text-accent-purple text-xs uppercase tracking-widest mb-1">02. Encapsulamento</p>
-                <p className="text-sm text-slate-300">Identificação de destino e ordem em cada pacote.</p>
+                <p className="text-sm text-slate-700 font-medium">Identificação de destino e ordem em cada pacote.</p>
               </div>
-              <div className="bg-slate-800/50 p-4 rounded-2xl border border-slate-700">
+              <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
                 <p className="font-black text-accent-blue text-xs uppercase tracking-widest mb-1">03. Roteamento</p>
-                <p className="text-sm text-slate-300">Viagem independente por múltiplos caminhos.</p>
+                <p className="text-sm text-slate-700 font-medium">Viagem independente por múltiplos caminhos.</p>
               </div>
-              <div className="bg-slate-800/50 p-4 rounded-2xl border border-slate-700">
+              <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
                 <p className="font-black text-accent-purple text-xs uppercase tracking-widest mb-1">04. Remontagem</p>
-                <p className="text-sm text-slate-300">Organização final para restaurar a mensagem.</p>
+                <p className="text-sm text-slate-700 font-medium">Organização final para restaurar a mensagem.</p>
               </div>
             </div>
 
@@ -150,13 +150,6 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
-      </div>
-
-      {/* Footer Info */}
-      <div className="absolute bottom-4 left-0 right-0 text-center z-10">
-        <p className="text-[10px] uppercase tracking-[0.3em] text-slate-600 font-medium">
-          Habilidade BNCC (EF06CO07) • Computação no Ensino Fundamental
-        </p>
       </div>
     </div>
   );
