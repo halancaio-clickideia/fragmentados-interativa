@@ -128,7 +128,7 @@ export default function App() {
                 <p className="text-sm text-slate-700 font-medium">Divisão do arquivo em pacotes para o transporte.</p>
               </div>
               <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-                <p className="font-black text-accent-purple text-xs uppercase tracking-widest mb-1">02. Encapsulamento</p>
+                <p className="font-black text-accent-blue text-xs uppercase tracking-widest mb-1">02. Encapsulamento</p>
                 <p className="text-sm text-slate-700 font-medium">Identificação de destino e ordem em cada pacote.</p>
               </div>
               <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
@@ -136,7 +136,7 @@ export default function App() {
                 <p className="text-sm text-slate-700 font-medium">Viagem independente por múltiplos caminhos.</p>
               </div>
               <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-                <p className="font-black text-accent-purple text-xs uppercase tracking-widest mb-1">04. Remontagem</p>
+                <p className="font-black text-accent-blue text-xs uppercase tracking-widest mb-1">04. Remontagem</p>
                 <p className="text-sm text-slate-700 font-medium">Organização final para restaurar a mensagem.</p>
               </div>
             </div>

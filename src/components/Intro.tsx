@@ -95,9 +95,9 @@ export const Explanation = ({ onNext }: { onNext: () => void, key?: string }) =>
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <span className="text-accent-purple font-black text-xl mt-0.5">02</span>
+            <span className="text-accent-blue font-black text-xl mt-0.5">02</span>
             <div>
-              <strong className="text-accent-purple block text-xl leading-none mb-1">Encapsulamento</strong>
+              <strong className="text-accent-blue block text-xl leading-none mb-1">Encapsulamento</strong>
               <span className="text-base">Identificar o destino e a ordem de cada pacote para o transporte.</span>
             </div>
           </li>
@@ -109,9 +109,9 @@ export const Explanation = ({ onNext }: { onNext: () => void, key?: string }) =>
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <span className="text-accent-purple font-black text-xl mt-0.5">04</span>
+            <span className="text-accent-blue font-black text-xl mt-0.5">04</span>
             <div>
-              <strong className="text-accent-purple block text-xl leading-none mb-1">Remontagem</strong>
+              <strong className="text-accent-blue block text-xl leading-none mb-1">Remontagem</strong>
               <span className="text-base">No destino, os pacotes são organizados e unidos para restaurar a mensagem.</span>
             </div>
           </li>
