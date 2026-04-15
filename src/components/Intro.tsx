@@ -79,29 +79,41 @@ export const Explanation = ({ onNext }: { onNext: () => void, key?: string }) =>
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 1.1 }}
-      className="glass-panel max-w-3xl p-10 md:p-14 z-10 mx-4"
+      className="glass-panel max-w-3xl p-8 md:p-10 z-10 mx-4"
     >
-      <h2 className="text-4xl font-bold mb-8 text-accent-blue uppercase tracking-wider">Relatório de Incidente</h2>
-      <div className="space-y-6 text-xl text-text-light leading-relaxed">
-        <p>
-          Um aluno enviou uma mensagem importante para um colega, mas ela se perdeu na rede! Para chegar ao destino, a informação precisa passar por 4 processos fundamentais:
-        </p>
+      <h2 className="text-3xl font-bold mb-6 text-accent-blue uppercase tracking-wider">Relatório de Incidente</h2>
+      <div className="space-y-4 text-lg text-text-light leading-snug">
+        <p className="mb-4">
+          Uma mensagem importante foi enviada entre dois amigos. Ela foi quebrada em 4 partes e espalhada pela rede. Precisamos de você para recuperar esses pedaços e assim remontar a informação.
+          </p>
         <ul className="space-y-4 list-none p-0">
-          <li className="flex items-center gap-4">
-            <span className="text-accent-blue font-black text-2xl">01</span>
-            <span><strong className="text-accent-blue">Fragmentação:</strong> Quebrar o arquivo em pedaços.</span>
+          <li className="flex items-start gap-3">
+            <span className="text-accent-blue font-black text-xl mt-0.5">01</span>
+            <div>
+              <strong className="text-accent-blue block text-xl leading-none mb-1">Fragmentação</strong>
+              <span className="text-base">Quebrar o arquivo em pedaços menores chamados <strong>pacotes</strong>.</span>
+            </div>
           </li>
-          <li className="flex items-center gap-4 opacity-70">
-            <span className="text-accent-purple font-black text-2xl">02</span>
-            <span><strong className="text-accent-purple">MTU e Túneis:</strong> Escolher o melhor caminho.</span>
+          <li className="flex items-start gap-3">
+            <span className="text-accent-purple font-black text-xl mt-0.5">02</span>
+            <div>
+              <strong className="text-accent-purple block text-xl leading-none mb-1">Encapsulamento</strong>
+              <span className="text-base">Identificar o destino e a ordem de cada pacote para o transporte.</span>
+            </div>
           </li>
-          <li className="flex items-center gap-4 opacity-70">
-            <span className="text-accent-blue font-black text-2xl">03</span>
-            <span><strong className="text-accent-blue">Roteamento:</strong> Encontrar o caminho na rede.</span>
+          <li className="flex items-start gap-3">
+            <span className="text-accent-blue font-black text-xl mt-0.5">03</span>
+            <div>
+              <strong className="text-accent-blue block text-xl leading-none mb-1">Roteamento</strong>
+              <span className="text-base">Os pacotes viajam de forma independente pelos caminhos da rede.</span>
+            </div>
           </li>
-          <li className="flex items-center gap-4 opacity-70">
-            <span className="text-accent-purple font-black text-2xl">04</span>
-            <span><strong className="text-accent-purple">Remontagem:</strong> Unir tudo no destino.</span>
+          <li className="flex items-start gap-3">
+            <span className="text-accent-purple font-black text-xl mt-0.5">04</span>
+            <div>
+              <strong className="text-accent-purple block text-xl leading-none mb-1">Remontagem</strong>
+              <span className="text-base">No destino, os pacotes são organizados e unidos para restaurar a mensagem.</span>
+            </div>
           </li>
         </ul>
       </div>
@@ -109,7 +121,7 @@ export const Explanation = ({ onNext }: { onNext: () => void, key?: string }) =>
       <motion.button
         whileHover={{ x: 5 }}
         onClick={onNext}
-        className="mt-10 w-full btn-primary"
+        className="mt-8 w-full btn-primary py-4"
       >
         ENTENDIDO
       </motion.button>

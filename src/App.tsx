@@ -122,6 +122,25 @@ export default function App() {
               </p>
             </div>
 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 text-left">
+              <div className="bg-slate-800/50 p-4 rounded-2xl border border-slate-700">
+                <p className="font-black text-accent-blue text-xs uppercase tracking-widest mb-1">01. Fragmentação</p>
+                <p className="text-sm text-slate-300">Divisão do arquivo em pacotes para o transporte.</p>
+              </div>
+              <div className="bg-slate-800/50 p-4 rounded-2xl border border-slate-700">
+                <p className="font-black text-accent-purple text-xs uppercase tracking-widest mb-1">02. Encapsulamento</p>
+                <p className="text-sm text-slate-300">Identificação de destino e ordem em cada pacote.</p>
+              </div>
+              <div className="bg-slate-800/50 p-4 rounded-2xl border border-slate-700">
+                <p className="font-black text-accent-blue text-xs uppercase tracking-widest mb-1">03. Roteamento</p>
+                <p className="text-sm text-slate-300">Viagem independente por múltiplos caminhos.</p>
+              </div>
+              <div className="bg-slate-800/50 p-4 rounded-2xl border border-slate-700">
+                <p className="font-black text-accent-purple text-xs uppercase tracking-widest mb-1">04. Remontagem</p>
+                <p className="text-sm text-slate-300">Organização final para restaurar a mensagem.</p>
+              </div>
+            </div>
+
             <button 
               onClick={resetGame}
               className="btn-primary w-full"
