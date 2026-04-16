@@ -16,7 +16,7 @@ export default function App() {
 
   // Load progress from localStorage if available
   useEffect(() => {
-    const saved = localStorage.getItem('fragmentados_progress');
+    const saved = localStorage.getItem('fragmentados_v1_progress');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -36,7 +36,7 @@ export default function App() {
 
   // Save progress
   useEffect(() => {
-    localStorage.setItem('fragmentados_progress', JSON.stringify(progress));
+    localStorage.setItem('fragmentados_v1_progress', JSON.stringify(progress));
   }, [progress]);
 
   const handleLevelComplete = (levelId: string) => {
@@ -61,7 +61,7 @@ export default function App() {
   const resetGame = () => {
     setProgress(INITIAL_PROGRESS);
     setGameState('intro');
-    localStorage.removeItem('fragmentados_progress');
+    localStorage.removeItem('fragmentados_v1_progress');
   };
 
   return (
