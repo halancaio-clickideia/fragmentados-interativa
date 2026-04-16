@@ -19,7 +19,15 @@ export default function App() {
     const saved = localStorage.getItem('fragmentados_progress');
     if (saved) {
       try {
-        setProgress(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.levels) {
+          setProgress({
+            levels: {
+              ...INITIAL_PROGRESS.levels,
+              ...parsed.levels
+            }
+          });
+        }
       } catch (e) {
         console.error("Error loading progress", e);
       }
@@ -74,11 +82,22 @@ export default function App() {
         )}
 
         {gameState === 'menu' && (
-          <LevelSelection 
-            key="menu" 
-            progress={progress} 
-            onSelectLevel={(level) => setGameState(level as GameState)} 
-          />
+          <div className="flex flex-col items-center w-full">
+            <LevelSelection 
+              key="menu" 
+              progress={progress} 
+              onSelectLevel={(level) => setGameState(level as GameState)} 
+            />
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              whileHover={{ opacity: 1 }}
+              onClick={resetGame}
+              className="mt-12 flex items-center gap-2 text-[10px] font-black uppercase tracking-[3px] text-slate-500 hover:text-danger transition-colors"
+            >
+              <RefreshCcw className="w-3 h-3" /> Reiniciar Progresso
+            </motion.button>
+          </div>
         )}
 
         {gameState === 'level1' && (

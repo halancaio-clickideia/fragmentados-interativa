@@ -39,11 +39,13 @@ export const LevelSelection = ({ progress, onSelectLevel }: LevelSelectionProps)
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               disabled={!isUnlocked}
-              onClick={() => onSelectLevel(level.id)}
-              className={`phase-card ${!isUnlocked ? 'locked' : ''} ${isCompleted ? 'border-success' : ''}`}
+              onClick={() => isUnlocked && onSelectLevel(level.id)}
+              className={`phase-card ${!isUnlocked ? 'locked opacity-50 grayscale' : 'hover:border-accent-blue'} ${isCompleted ? 'border-success' : ''}`}
             >
               {!isUnlocked && (
-                <div className="absolute top-4 right-4 text-xl">🔒</div>
+                <div className="absolute top-4 right-4 text-slate-400">
+                  <Lock className="w-5 h-5" />
+                </div>
               )}
               
               <div className="flex items-center gap-6">

@@ -57,8 +57,16 @@
     @apply bg-bg-card border border-slate-300 p-8 rounded-2xl text-center transition-all relative shadow-sm;
   }
 
-  .phase-card:not(.locked):hover {
+  .phase-card:not(:disabled):hover {
     @apply -translate-y-1 border-accent-blue shadow-md;
+  }
+
+  .phase-card:disabled {
+    @apply opacity-60 grayscale cursor-not-allowed;
+  }
+
+  .phase-card.locked {
+    @apply bg-slate-100 border-dashed border-slate-300;
   }
 
   .header-ui {
