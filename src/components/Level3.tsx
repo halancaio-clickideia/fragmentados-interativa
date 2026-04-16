@@ -129,20 +129,11 @@ export const Level3 = ({ onComplete, onBack }: Level3Props) => {
 
     // Check if moving backward (to a node already in path)
     const isBacktrack = path.includes(targetId) && targetId !== currentNode;
-    const isReverse = activeConnections.some(c => c.from === targetId && c.to === currentNode);
 
-    if (isBacktrack || isReverse) {
-      if (path.includes(targetId)) {
-        const targetIndex = path.indexOf(targetId);
-        setPath(path.slice(0, targetIndex + 1));
-      } else {
-        // If jumping to a node not in path but connected to us (reverse move)
-        setPath([0, targetId]);
-      }
-      setCurrentNode(targetId);
-      setIsFailed(false);
-      setIsTransmitting(false);
-      setTransmittingTo(null);
+    if (isBacktrack) {
+      const targetIndex = path.indexOf(targetId);
+      setPath(path.slice(0, targetIndex + 1));
+    setCurrentNode(targetId);
       return;
     }
 
@@ -292,8 +283,7 @@ export const Level3 = ({ onComplete, onBack }: Level3Props) => {
               {activeNodes.map(node => {
                 const isCurrent = currentNode === node.id;
                 const isInPath = path.includes(node.id);
-                const isReverseTargetable = activeConnections.some(c => c.from === node.id && c.to === currentNode);
-                const isBacktrackable = (isInPath || isReverseTargetable) && !isCurrent;
+                const isBacktrackable = isInPath && !isCurrent;
                 const isTargetable = activeConnections.some(c => c.from === currentNode && c.to === node.id);
                 
                 return (
@@ -304,7 +294,7 @@ export const Level3 = ({ onComplete, onBack }: Level3Props) => {
                     style={{ left: `${node.x}%`, top: `${node.y}%` }}
                     className={`absolute -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-xl flex items-center justify-center border-4 transition-all z-10
                       ${isCurrent ? 'bg-accent-blue border-white text-white shadow-[0_0_20px_rgba(0,242,255,0.5)] scale-110' : 
-                        isBacktrackable ? 'bg-emerald-100 border-emerald-500 text-emerald-600 hover:scale-110 cursor-pointer shadow-lg' :
+                       isBacktrackable ? 'bg-emerald-100 border-emerald-500 text-emerald-600 hover:scale-110 cursor-pointer' :
                         isInPath ? 'bg-emerald-500 border-white text-white' : 
                         isTargetable ? 'bg-white border-accent-blue text-accent-blue hover:scale-110 cursor-pointer' : 
                         'bg-slate-200 border-slate-300 text-slate-400 opacity-50'}
@@ -326,7 +316,7 @@ export const Level3 = ({ onComplete, onBack }: Level3Props) => {
               {(() => {
                 const outgoing = activeConnections.filter(c => c.from === currentNode);
                 const allBlocked = outgoing.length > 0 && outgoing.every(c => blockedConnections.some(bc => bc.from === c.from && bc.to === c.to));
-                if (allBlocked) {
+                if (allBlocked && path.length > 1) {
                   return (
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
@@ -334,7 +324,7 @@ export const Level3 = ({ onComplete, onBack }: Level3Props) => {
                       className="absolute top-4 left-1/2 -translate-x-1/2 bg-amber-500 text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-lg z-50 flex items-center gap-2"
                     >
                       <AlertTriangle className="w-4 h-4" />
-                      Caminho sem saída! Volte para um roteador anterior para tentar outra rota.
+                      Caminho sem saída! Clique em um roteador anterior para voltar.
                     </motion.div>
                   );
                 }
