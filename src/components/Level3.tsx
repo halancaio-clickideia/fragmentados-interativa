@@ -129,16 +129,10 @@ export const Level3 = ({ onComplete, onBack }: Level3Props) => {
 
     // Check if moving backward (to a node already in path)
     const isBacktrack = path.includes(targetId) && targetId !== currentNode;
-    const isReverse = activeConnections.some(c => c.from === targetId && c.to === currentNode);
 
-    if (isBacktrack || isReverse) {
-      if (path.includes(targetId)) {
-        const targetIndex = path.indexOf(targetId);
-        setPath(path.slice(0, targetIndex + 1));
-      } else {
-        // If jumping to a node not in path but connected to us (reverse move)
-        setPath([0, targetId]);
-      }
+    if (isBacktrack) {
+      const targetIndex = path.indexOf(targetId);
+      setPath(path.slice(0, targetIndex + 1));
       setCurrentNode(targetId);
       setIsFailed(false);
       setIsTransmitting(false);
@@ -292,8 +286,7 @@ export const Level3 = ({ onComplete, onBack }: Level3Props) => {
               {activeNodes.map(node => {
                 const isCurrent = currentNode === node.id;
                 const isInPath = path.includes(node.id);
-                const isReverseTargetable = activeConnections.some(c => c.from === node.id && c.to === currentNode);
-                const isBacktrackable = (isInPath || isReverseTargetable) && !isCurrent;
+                const isBacktrackable = isInPath && !isCurrent;
                 const isTargetable = activeConnections.some(c => c.from === currentNode && c.to === node.id);
                 
                 return (
