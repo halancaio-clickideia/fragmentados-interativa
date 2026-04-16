@@ -15,8 +15,8 @@ export interface GameProgress {
 export const INITIAL_PROGRESS: GameProgress = {
   levels: {
     level1: { unlocked: true, completed: false, messagePart: "A internet " },
-    level2: { unlocked: true, completed: false, messagePart: "funciona " },
-    level3: { unlocked: true, completed: false, messagePart: "enviando " },
-    level4: { unlocked: true, completed: false, messagePart: "pacotes!" },
+    level2: { unlocked: false, completed: false, messagePart: "funciona " },
+    level3: { unlocked: false, completed: false, messagePart: "enviando " },
+    level4: { unlocked: false, completed: false, messagePart: "pacotes!" },
   }
 };
