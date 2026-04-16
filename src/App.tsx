@@ -14,30 +14,30 @@ export default function App() {
   const [gameState, setGameState] = useState<GameState>('intro');
   const [progress, setProgress] = useState<GameProgress>(INITIAL_PROGRESS);
 
-  // Load progress from localStorage if available
-  useEffect(() => {
-    const saved = localStorage.getItem('fragmentados_v1_progress');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (parsed && parsed.levels) {
-          setProgress({
-            levels: {
-              ...INITIAL_PROGRESS.levels,
-              ...parsed.levels
-            }
-          });
-        }
-      } catch (e) {
-        console.error("Error loading progress", e);
-      }
-    }
-  }, []);
+  // // Load progress from localStorage if available
+  // useEffect(() => {
+  //   const saved = localStorage.getItem('fragmentados_v1_progress');
+  //   if (saved) {
+  //     try {
+  //       const parsed = JSON.parse(saved);
+  //       if (parsed && parsed.levels) {
+  //         setProgress({
+  //           levels: {
+  //             ...INITIAL_PROGRESS.levels,
+  //             ...parsed.levels
+  //           }
+  //         });
+  //       }
+  //     } catch (e) {
+  //       console.error("Error loading progress", e);
+  //     }
+  //   }
+  // }, []);
 
-  // Save progress
-  useEffect(() => {
-    localStorage.setItem('fragmentados_v1_progress', JSON.stringify(progress));
-  }, [progress]);
+  // // Save progress
+  // useEffect(() => {
+  //   localStorage.setItem('fragmentados_v1_progress', JSON.stringify(progress));
+  // }, [progress]);
 
   const handleLevelComplete = (levelId: string) => {
     const nextLevelId = levelId === 'level1' ? 'level2' : levelId === 'level2' ? 'level3' : levelId === 'level3' ? 'level4' : null;
