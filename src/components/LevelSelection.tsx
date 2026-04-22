@@ -21,10 +21,19 @@ export const LevelSelection = ({ progress, onSelectLevel }: LevelSelectionProps)
       <motion.h2 
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="text-4xl font-bold text-center mb-12 uppercase tracking-[4px] text-slate-900"
+        className="text-4xl font-bold text-center mb-4 uppercase tracking-[4px] text-slate-900"
       >
         Seletor de Fases
       </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="text-center text-slate-600 mb-12 max-w-2xl mx-auto font-medium"
+      >
+        Cada fase desta jornada revela uma etapa essencial do caminho da informação, do desmembramento à reconstrução final. Explore cada uma e avance no processo.
+      </motion.p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {levels.map((level, index) => {

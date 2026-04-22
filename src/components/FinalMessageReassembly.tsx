@@ -9,10 +9,10 @@ interface FinalMessageReassemblyProps {
 }
 
 const FINAL_PARTS = [
-  { id: 1, text: "OS DADOS SÃO" },
-  { id: 2, text: "FRAGMENTADOS E" },
-  { id: 3, text: "ENVIADOS ATRAVÉS DE" },
-  { id: 4, text: "MÚLTIPLOS CAMINHOS" },
+  { id: 1, text: "Tô estudando redes hoje," },
+  { id: 2, text: "é massa ver como a mensagem sai do celular" },
+  { id: 3, text: "e chega no outro mesmo" },
+  { id: 4, text: "passando por vários caminhos." },
 ];
 
 export const FinalMessageReassembly = ({ onComplete, onBack }: FinalMessageReassemblyProps) => {
@@ -84,7 +84,7 @@ export const FinalMessageReassembly = ({ onComplete, onBack }: FinalMessageReass
                     : 'bg-white border-slate-200 text-slate-800 hover:border-accent-blue shadow-lg'}
                 `}
               >
-                <span className="font-mono text-xl font-black tracking-tighter uppercase">{part.text}</span>
+                <span className="font-mono text-lg font-black leading-tight">{part.text}</span>
                 {isSelected && (
                   <div className="absolute top-4 right-4 w-10 h-10 bg-white text-accent-blue rounded-full flex items-center justify-center text-lg font-black shadow-md">
                     {selectedIndex + 1}
@@ -108,7 +108,7 @@ export const FinalMessageReassembly = ({ onComplete, onBack }: FinalMessageReass
                 key={id}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-2xl font-black text-accent-purple tracking-tighter bg-white px-6 py-3 rounded-2xl shadow-md border-2 border-accent-purple/20"
+                className="text-xl font-black text-accent-purple leading-tight bg-white px-6 py-3 rounded-2xl shadow-md border-2 border-accent-purple/20"
               >
                 {FINAL_PARTS.find(p => p.id === id)?.text}
               </motion.span>

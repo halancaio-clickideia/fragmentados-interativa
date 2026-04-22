@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Network, Cpu, ArrowRight, CheckCircle2, AlertTriangle, Zap, Clock, ArrowLeft } from 'lucide-react';
+import { Network, Cpu, ArrowRight, CheckCircle2, AlertTriangle, Zap, Clock, ArrowLeft, Lightbulb, X } from 'lucide-react';
 
 interface Level3Props {
   onComplete: () => void;
@@ -152,11 +152,6 @@ export const Level3 = ({ onComplete, onBack }: Level3Props) => {
       if (conn.isBlocked) {
         setIsFailed(true);
         setBlockedConnections(prev => [...prev, { from: currentNode, to: targetId }]);
-        setTimeout(() => {
-          setIsFailed(false);
-          setIsTransmitting(false);
-          setTransmittingTo(null);
-        }, 1500);
       } else {
         setCurrentNode(targetId);
         setPath(prev => [...prev, targetId]);
@@ -200,14 +195,17 @@ export const Level3 = ({ onComplete, onBack }: Level3Props) => {
               <Network className="w-10 h-10" /> Fase 3: Roteamento Dinâmico
             </h2>
             <div className="space-y-6 text-xl text-text-light leading-relaxed">
-              <p>
+              <p className="text-justify">
                 A internet é dinâmica! Roteadores buscam o <strong className="text-accent-blue">caminho mais rápido</strong>, mas às vezes encontram bloqueios inesperados.
               </p>
-              <p>
+              <p className="text-justify">
                 Nesta fase, você deve guiar o pacote até o destino. Alguns caminhos são mais lentos e outros podem estar <strong className="text-danger">bloqueados</strong>.
               </p>
-              <p className="text-text-muted italic">
-                Dica: Se um caminho falhar, o roteador voltará automaticamente para que você tente uma rota alternativa.
+              <p className="text-text-muted flex items-center gap-3 bg-slate-50 p-6 rounded-2xl border border-slate-200 text-justify">
+                <Lightbulb className="w-8 h-8 text-amber-500 shrink-0" />
+                <span>
+                  <strong>Dica:</strong> Se um caminho falhar, o roteador voltará automaticamente para que você tente uma rota alternativa.
+                </span>
               </p>
             </div>
             <button 
@@ -341,16 +339,26 @@ export const Level3 = ({ onComplete, onBack }: Level3Props) => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="absolute inset-0 bg-red-500/10 backdrop-blur-[2px] flex flex-col items-center justify-center text-center p-8 z-50"
+                    className="absolute inset-0 bg-slate-900/40 backdrop-blur-[2px] flex flex-col items-center justify-center text-center p-8 z-50"
                   >
                     <motion.div
                       initial={{ scale: 0.8 }}
                       animate={{ scale: 1 }}
-                      className="bg-white p-6 rounded-3xl shadow-2xl border-4 border-red-500 max-w-xs"
+                      className="bg-white p-8 rounded-3xl shadow-2xl border-4 border-red-500 max-w-xs relative"
                     >
                       <AlertTriangle className="w-12 h-12 text-red-500 mx-auto mb-3" />
                       <h4 className="text-xl font-black text-red-600 mb-1 uppercase tracking-tighter">Caminho Bloqueado!</h4>
-                      <p className="text-slate-600 text-sm font-bold">O roteador detectou uma falha. Retornando para buscar nova rota...</p>
+                      <p className="text-slate-600 text-sm font-bold mb-6">O roteador detectou uma falha. Retornando para buscar nova rota...</p>
+                      <button 
+                        onClick={() => {
+                          setIsFailed(false);
+                          setIsTransmitting(false);
+                          setTransmittingTo(null);
+                        }}
+                        className="btn-primary py-3 px-8 text-xs w-full uppercase"
+                      >
+                        ALTERAR ROTA
+                      </button>
                     </motion.div>
                   </motion.div>
                 )}
@@ -401,7 +409,7 @@ export const Level3 = ({ onComplete, onBack }: Level3Props) => {
             </p>
             <div className="bg-indigo-50 border-4 border-indigo-200 p-8 rounded-3xl mb-8 inline-block shadow-inner">
               <p className="text-xs uppercase tracking-widest text-indigo-400 mb-4 font-black">Parte da Mensagem Resgatada:</p>
-              <p className="text-3xl font-mono font-black text-indigo-600 tracking-tighter">"ENVIADOS ATRAVÉS DE"</p>
+              <p className="text-3xl font-mono font-black text-indigo-600 tracking-tighter">"e chega no outro mesmo"</p>
             </div>
             <button 
               onClick={onComplete}

@@ -81,38 +81,51 @@ export const Explanation = ({ onNext }: { onNext: () => void, key?: string }) =>
       exit={{ opacity: 0, scale: 1.1 }}
       className="glass-panel max-w-3xl p-8 md:p-10 z-10 mx-4"
     >
-      <h2 className="text-3xl font-bold mb-6 text-accent-blue uppercase tracking-wider">Relatório de Incidente</h2>
-      <div className="space-y-4 text-lg text-text-light leading-snug">
-        <p className="mb-4">
-          Uma mensagem importante foi enviada entre dois amigos. Ela foi quebrada em 4 partes e espalhada pela rede. Precisamos de você para recuperar esses pedaços e assim remontar a informação.
+      <div className="flex flex-col md:flex-row gap-8 items-center mb-6">
+        <div className="w-full md:w-1/3 aspect-square bg-slate-100 rounded-3xl flex items-center justify-center border-2 border-dashed border-slate-300 relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50" />
+          <Network className="w-20 h-20 text-slate-300 group-hover:scale-110 transition-transform" />
+          <div className="absolute inset-x-0 bottom-4 text-center">
+            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Ilustração da Mensagem Fragmentada</span>
+          </div>
+        </div>
+        <div className="flex-1">
+          <h2 className="text-3xl font-bold mb-4 text-accent-blue uppercase tracking-wider">Relatório de Incidente</h2>
+          <p className="text-lg text-text-light leading-snug text-justify">
+            Uma mensagem importante foi enviada entre dois amigos. Ela foi quebrada em 4 partes e espalhada pela rede. Precisamos de você para recuperar esses pedaços e assim remontar a informação.
           </p>
-        <ul className="space-y-4 list-none p-0">
-          <li className="flex items-start gap-3">
-            <span className="text-accent-blue font-black text-xl mt-0.5">01</span>
+        </div>
+      </div>
+
+      <div className="space-y-6 text-lg text-text-light leading-snug">
+        <p className="font-bold text-slate-700">Para solucionar esse problema, você deverá realizar os seguintes passos:</p>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 list-none p-0">
+          <li className="flex items-start gap-4 p-4 bg-blue-50/50 rounded-2xl border border-blue-100">
+            <span className="text-accent-blue font-black text-2xl mt-0.5">01</span>
             <div>
               <strong className="text-accent-blue block text-xl leading-none mb-1">Fragmentação</strong>
-              <span className="text-base">Quebrar o arquivo em pedaços menores chamados <strong>pacotes</strong>.</span>
+              <span className="text-base text-slate-700 text-justify block">Quebrar o arquivo em pedaços menores chamados <strong>pacotes</strong>.</span>
             </div>
           </li>
-          <li className="flex items-start gap-3">
-            <span className="text-accent-blue font-black text-xl mt-0.5">02</span>
+          <li className="flex items-start gap-4 p-4 bg-purple-50/50 rounded-2xl border border-purple-100">
+            <span className="text-accent-blue font-black text-2xl mt-0.5">02</span>
             <div>
               <strong className="text-accent-blue block text-xl leading-none mb-1">Encapsulamento</strong>
-              <span className="text-base">Identificar o destino e a ordem de cada pacote para o transporte.</span>
+              <span className="text-base text-slate-700 text-justify block">Identificar o destino e a ordem de cada pacote para o transporte.</span>
             </div>
           </li>
-          <li className="flex items-start gap-3">
-            <span className="text-accent-blue font-black text-xl mt-0.5">03</span>
+          <li className="flex items-start gap-4 p-4 bg-emerald-50/50 rounded-2xl border border-emerald-100">
+            <span className="text-accent-blue font-black text-2xl mt-0.5">03</span>
             <div>
               <strong className="text-accent-blue block text-xl leading-none mb-1">Roteamento</strong>
-              <span className="text-base">Os pacotes viajam de forma independente pelos caminhos da rede.</span>
+              <span className="text-base text-slate-700 text-justify block">Conduzir os pacotes de forma independente pelos caminhos da rede.</span>
             </div>
           </li>
-          <li className="flex items-start gap-3">
-            <span className="text-accent-blue font-black text-xl mt-0.5">04</span>
+          <li className="flex items-start gap-4 p-4 bg-amber-50/50 rounded-2xl border border-amber-100">
+            <span className="text-accent-blue font-black text-2xl mt-0.5">04</span>
             <div>
               <strong className="text-accent-blue block text-xl leading-none mb-1">Remontagem</strong>
-              <span className="text-base">No destino, os pacotes são organizados e unidos para restaurar a mensagem.</span>
+              <span className="text-base text-slate-700 text-justify block">Organizar e unir, no destino, os pacotes para restaurar a mensagem.</span>
             </div>
           </li>
         </ul>

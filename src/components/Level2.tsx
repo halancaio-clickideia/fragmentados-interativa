@@ -211,14 +211,14 @@ export const Level2 = ({ onComplete, onBack }: Level2Props) => {
               <Shield className="w-10 h-10" /> Fase 2: Fragmentação e MTU
             </h2>
             <div className="space-y-6 text-xl text-text-light leading-relaxed">
-              <p>
+              <p className="text-justify">
                 Nem todos os caminhos na rede são iguais. Cada "túnel" de conexão tem um limite de tamanho chamado <strong className="text-accent-blue">MTU (Maximum Transmission Unit)</strong>.
               </p>
-              <p>
+              <p className="text-justify">
                 Se você enviar pacotes maiores que o túnel permite, eles serão bloqueados. Se enviar pacotes pequenos demais para um túnel grande, você desperdiça tempo!
               </p>
-              <p className="text-text-muted italic font-semibold">
-                Seu objetivo: Escolher o tamanho ideal para os pacotes e os direcione para o túnel de capacidade compatível.
+              <p className="text-text-muted font-semibold text-justify">
+                Seu objetivo: Escolher o tamanho ideal para os pacotes e os direcionar para o túnel de capacidade compatível.
               </p>
             </div>
             <button 
@@ -247,7 +247,7 @@ export const Level2 = ({ onComplete, onBack }: Level2Props) => {
               </div>
 
               <p className="text-green-900 font-medium mb-6 leading-relaxed">
-                Escolha o tamanho ideal para os pacotes e os direcione para o túnel de capacidade compatível: O objetivo é garantir que toda a informação seja enviada no menor tempo possível.
+                Escolha o tamanho ideal para os pacotes e os direcionar para o túnel de capacidade compatível: O objetivo é garantir que toda a informação seja enviada no menor tempo possível.
               </p>
 
               <div className="grid grid-cols-2 gap-3">
@@ -595,7 +595,7 @@ export const Level2 = ({ onComplete, onBack }: Level2Props) => {
             </p>
             <div className="bg-slate-100 p-8 rounded-3xl mb-10 border border-slate-200 shadow-inner">
               <p className="text-xs uppercase tracking-widest text-text-muted mb-4 font-black">Parte da Mensagem Resgatada:</p>
-              <p className="text-3xl font-mono font-black text-accent-purple tracking-tighter">"...SÃO QUEBRADOS EM..."</p>
+              <p className="text-2xl font-mono font-black text-accent-purple tracking-tighter">"é massa ver como a mensagem sai do celular"</p>
             </div>
             <button onClick={onComplete} className="btn-primary w-full shadow-xl">
               CONTINUAR PARA FASE 3

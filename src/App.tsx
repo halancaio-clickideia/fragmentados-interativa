@@ -99,44 +99,67 @@ export default function App() {
             key="final"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="glass-panel p-12 text-center z-10 max-w-2xl mx-4"
+            className="glass-panel p-10 md:p-14 text-center z-10 max-w-6xl mx-4"
           >
-            <Trophy className="w-24 h-24 text-yellow-500 mx-auto mb-6" />
-            <h2 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 to-orange-600">
-              ARQUIVO RESGATADO!
-            </h2>
-            <p className="text-xl text-slate-700 mb-8 font-medium">
-              Você dominou os conceitos de transmissão de dados e restaurou a mensagem original:
-            </p>
+            <div className="flex flex-col md:flex-row gap-12 items-center mb-12 text-left">
+              {/* Final Illustration - Smaller and side-by-side */}
+              <div className="w-full md:w-5/12 aspect-[4/3] bg-slate-100 rounded-[40px] border-2 border-dashed border-slate-300 relative overflow-hidden flex items-center justify-center group shrink-0 shadow-lg">
+                <img 
+                  src="https://picsum.photos/seed/fragmentados-final/800/600" 
+                  alt="Ilustração final: Amigos celebrando o resgate do arquivo"
+                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-0 right-0 text-center">
+                  <span className="text-[10px] font-black uppercase tracking-[3px] text-white drop-shadow-md">Ilustração do Resgate Final</span>
+                </div>
+              </div>
+
+              <div className="flex-1 text-center">
+                <Trophy className="w-16 h-16 text-yellow-500 mb-6 mx-auto" />
+                <h2 className="text-4xl lg:text-5xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 to-orange-600 uppercase tracking-tighter leading-none text-center">
+                  ARQUIVO RESGATADO!
+                </h2>
+                <p className="text-xl text-slate-700 font-medium leading-relaxed mb-6">
+                  Você dominou os conceitos de transmissão de dados e restaurou a mensagem original:
+                </p>
+
+                <div className="bg-emerald-50 border-4 border-emerald-200 p-6 rounded-[24px] shadow-inner">
+                  <p className="text-xl lg:text-2xl font-black text-emerald-700 leading-tight">
+                    "Tô estudando redes hoje, é massa ver como a mensagem sai do celular e chega no outro mesmo passando por vários caminhos."
+                  </p>
+                </div>
+              </div>
+            </div>
             
-            <div className="bg-emerald-50 border-4 border-emerald-200 p-8 rounded-[32px] mb-10 shadow-inner">
-              <p className="text-2xl md:text-3xl font-black text-emerald-700 tracking-tighter leading-tight uppercase">
-                "OS DADOS SÃO FRAGMENTADOS E ENVIADOS ATRAVÉS DE MÚLTIPLOS CAMINHOS"
-              </p>
+            <div className="text-left mb-6">
+              <p className="text-sm font-black uppercase tracking-[4px] text-slate-400 mb-2">Relembre o que você aprendeu.</p>
+              <div className="w-24 h-1.5 bg-accent-blue rounded-full" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 text-left">
-              <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-                <p className="font-black text-accent-blue text-xs uppercase tracking-widest mb-1">01. Fragmentação</p>
-                <p className="text-sm text-slate-700 font-medium">Divisão do arquivo em pacotes para o transporte.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 text-left">
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-accent-blue transition-colors group">
+                <p className="font-black text-accent-blue text-xs uppercase tracking-[2px] mb-2 opacity-70 group-hover:opacity-100 transition-opacity">01. Fragmentação</p>
+                <p className="text-sm text-slate-700 font-bold leading-tight">Divisão do arquivo em pacotes para o transporte.</p>
               </div>
-              <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-                <p className="font-black text-accent-blue text-xs uppercase tracking-widest mb-1">02. Encapsulamento</p>
-                <p className="text-sm text-slate-700 font-medium">Identificação de destino e ordem em cada pacote.</p>
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-accent-blue transition-colors group">
+                <p className="font-black text-accent-blue text-xs uppercase tracking-[2px] mb-2 opacity-70 group-hover:opacity-100 transition-opacity">02. Encapsulamento</p>
+                <p className="text-sm text-slate-700 font-bold leading-tight">Identificação de destino e ordem em cada pacote.</p>
               </div>
-              <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-                <p className="font-black text-accent-blue text-xs uppercase tracking-widest mb-1">03. Roteamento</p>
-                <p className="text-sm text-slate-700 font-medium">Viagem independente por múltiplos caminhos.</p>
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-accent-blue transition-colors group">
+                <p className="font-black text-accent-blue text-xs uppercase tracking-[2px] mb-2 opacity-70 group-hover:opacity-100 transition-opacity">03. Roteamento</p>
+                <p className="text-sm text-slate-700 font-bold leading-tight">Viagem independente por múltiplos caminhos.</p>
               </div>
-              <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-                <p className="font-black text-accent-blue text-xs uppercase tracking-widest mb-1">04. Remontagem</p>
-                <p className="text-sm text-slate-700 font-medium">Organização final para restaurar a mensagem.</p>
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-accent-blue transition-colors group">
+                <p className="font-black text-accent-blue text-xs uppercase tracking-[2px] mb-2 opacity-70 group-hover:opacity-100 transition-opacity">04. Remontagem</p>
+                <p className="text-sm text-slate-700 font-bold leading-tight">Organização final para restaurar a mensagem.</p>
               </div>
             </div>
 
             <button 
               onClick={resetGame}
-              className="btn-primary w-full"
+              className="btn-primary w-full py-6 text-lg"
             >
               JOGAR NOVAMENTE
             </button>

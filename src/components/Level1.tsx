@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Box, ArrowRight, CheckCircle2, Shield, ArrowLeft } from 'lucide-react';
+import { Box, ArrowRight, CheckCircle2, Shield, ArrowLeft, Rocket } from 'lucide-react';
 
 interface Level1Props {
   onComplete: () => void;
@@ -21,8 +21,9 @@ export const Level1 = ({ onComplete, onBack }: Level1Props) => {
     { id: 4, color: 'bg-cyan-500' },
   ];
 
-  const handleFragment = () => {
+    const handleFragment = () => {
     setIsFragmented(true);
+    setShowError(false);
   };
 
   const handleDrop = (id: number) => {
@@ -44,32 +45,40 @@ export const Level1 = ({ onComplete, onBack }: Level1Props) => {
       </button>
       <AnimatePresence mode="wait">
         {step === 'explanation' && (
-          <motion.div
+           <motion.div
             key="explanation"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             className="glass-panel p-10 max-w-3xl"
           >
-            <h2 className="text-4xl font-bold mb-8 text-accent-blue uppercase tracking-wider flex items-center gap-4">
-              <Box className="w-10 h-10" /> Fase 1: Fragmentação
-            </h2>
-            <div className="space-y-6 text-xl text-text-light leading-relaxed">
-              <p>
+            <div className="space-y-6 text-xl text-text-light leading-relaxed mb-8">
+              <p className="text-justify">
                 A informação digital (uma foto, um áudio ou um site) é geralmente grande demais para ser enviada de uma só vez. 
                 Se tentássemos enviar um arquivo inteiro e ocorresse uma pequena falha no cabo, teríamos que recomeçar do zero.
               </p>
-              <p>
-                O que acontece: O computador divide o arquivo em pedaços minúsculos chamados <strong className="text-accent-blue">Pacotes</strong>. 
-                Imagine enviar um livro de 500 páginas pelo correio, mas em vez de uma caixa grande, você envia 500 envelopes separados, cada um com uma página.
-              </p>
-              <p className="text-text-muted italic">
+              
+              <div className="flex flex-col md:flex-row gap-8 items-center">
+                <div className="w-full md:w-1/3 aspect-square bg-slate-100 rounded-3xl flex items-center justify-center border-2 border-dashed border-slate-300 relative overflow-hidden group shrink-0">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50" />
+                  <Rocket className="w-20 h-20 text-slate-300 group-hover:scale-110 transition-transform" />
+                  <div className="absolute inset-x-0 bottom-4 text-center">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Ilustração da Fragmentação</span>
+                  </div>
+                </div>
+                <p className="flex-1 text-justify">
+                  O que acontece: O computador divide o arquivo em pedaços minúsculos chamados <strong className="text-accent-blue">Pacotes</strong>. 
+                  Imagine enviar um livro de 500 páginas pelo correio, mas em vez de uma caixa grande, você envia 500 envelopes separados, cada um com uma página.
+                </p>
+              </div>
+
+              <p className="text-text-muted text-justify">
                 Para compreender melhor, vamos usar o conceito de fragmentação na prática.
               </p>
             </div>
             <button 
               onClick={() => setStep('challenge')}
-              className="mt-10 w-full btn-primary"
+              className="mt-4 w-full btn-primary"
             >
               INICIAR DESAFIO
             </button>
@@ -105,7 +114,6 @@ export const Level1 = ({ onComplete, onBack }: Level1Props) => {
                       // Check if dropped near rocket (right side of screen)
                       if (info.point.x > window.innerWidth * 0.6) {
                         setShowError(true);
-                        setTimeout(() => setShowError(false), 3000);
                       }
                     }}
                     className="w-52 h-52 bg-slate-50 border-4 border-slate-200 rounded-xl flex items-center justify-center cursor-grab active:cursor-grabbing shadow-2xl relative overflow-visible group z-50"
@@ -176,7 +184,7 @@ export const Level1 = ({ onComplete, onBack }: Level1Props) => {
                   >
                     <p className="font-black mb-2 uppercase tracking-tighter text-base">Capacidade máxima excedida</p>
                     <p className="text-slate-600 font-medium mb-4 leading-tight">
-                      O compartimento de carga do foguete não suporta o tamanho total do satélite para lançamento. Você deve fragmentá-lo para conseguir lançar.
+                      O compartimento de carga do foguete não suporta o tamanho total do satélite para lançamento. Você deve fragmentá-lo para conseguir <span className="whitespace-nowrap">lançar o objeto.</span>
                     </p>
                     <button 
                       onClick={handleFragment}
@@ -272,7 +280,7 @@ export const Level1 = ({ onComplete, onBack }: Level1Props) => {
               Você liberou a primeira parte da mensagem.
             </p>
             <div className="bg-indigo-500/20 border border-indigo-500/50 p-6 rounded-2xl mb-8 inline-block">
-              <span className="text-2xl font-mono text-indigo-300">"A internet "</span>
+              <span className="text-2xl font-mono text-indigo-300">"Tô estudando redes hoje,"</span>
             </div>
             <button 
               onClick={onComplete}

@@ -167,13 +167,13 @@ export const Level4 = ({ onComplete, onBack }: Level4Props) => {
               <Puzzle className="w-10 h-10" /> Fase 4: Regeneração de Dados
             </h2>
             <div className="space-y-6 text-xl text-text-light leading-relaxed">
-              <p>
+              <p className="text-justify">
                 Os pacotes chegaram, mas o canal de comunicação está instável. Alguns fragmentos sofreram interferência e outros estão intactos.
               </p>
-              <p>
+              <p className="text-justify">
                 <strong className="text-accent-blue">Seu Desafio:</strong> Identifique quais fragmentos estão com caracteres incorretos, clique neles e digite a versão corrigida.
               </p>
-              <p className="text-text-muted italic">
+              <p className="text-text-muted text-justify">
                 Você enfrentará 5 sequências de dados. Após regenerar cada uma, coloque os blocos na ordem correta para prosseguir.
               </p>
             </div>
@@ -371,7 +371,7 @@ export const Level4 = ({ onComplete, onBack }: Level4Props) => {
                 Fragmento Desbloqueado
               </div>
               <p className="text-3xl md:text-4xl font-black text-emerald-700 tracking-tighter leading-tight">
-                "MÚLTIPLOS CAMINHOS"
+                "passando por vários caminhos."
               </p>
             </div>
             <button 
