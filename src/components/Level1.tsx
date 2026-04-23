@@ -52,6 +52,9 @@ export const Level1 = ({ onComplete, onBack }: Level1Props) => {
             exit={{ opacity: 0, y: -20 }}
             className="glass-panel p-10 max-w-3xl"
           >
+            <h2 className="text-4xl font-bold mb-8 text-accent-blue uppercase tracking-wider flex items-center gap-4">
+              <Rocket className="w-10 h-10" /> Fase 1: Fragmentação
+            </h2>
             <div className="space-y-6 text-xl text-text-light leading-relaxed mb-8">
               <p className="text-justify">
                 A informação digital (uma foto, um áudio ou um site) é geralmente grande demais para ser enviada de uma só vez. 

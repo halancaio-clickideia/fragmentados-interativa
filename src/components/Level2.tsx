@@ -208,7 +208,7 @@ export const Level2 = ({ onComplete, onBack }: Level2Props) => {
             className="glass-panel p-10 max-w-3xl"
           >
             <h2 className="text-4xl font-bold mb-8 text-accent-blue uppercase tracking-wider flex items-center gap-4">
-              <Shield className="w-10 h-10" /> Fase 2: Fragmentação e MTU
+              <Shield className="w-10 h-10" /> Fase 2: Encapsulamento
             </h2>
             <div className="space-y-6 text-xl text-text-light leading-relaxed">
               <p className="text-justify">
