@@ -64,10 +64,9 @@ export const Level1 = ({ onComplete, onBack }: Level1Props) => {
               <div className="flex flex-col md:flex-row gap-8 items-center">
                 <div className="w-full md:w-1/2 aspect-square bg-white rounded-3xl flex items-center justify-center border-2 border-slate-100 relative overflow-hidden group shrink-0 shadow-lg">
                   <img 
-                    src="/network_diagram.png" 
+                    src="network_diagram.png" 
                     alt="Diagrama de Redes" 
                     className="w-full h-full object-cover z-10" 
-                    referrerPolicy="no-referrer" 
                   />
                 </div>
                 <p className="flex-1 text-justify">
@@ -124,7 +123,7 @@ export const Level1 = ({ onComplete, onBack }: Level1Props) => {
                     className="w-64 h-64 flex items-center justify-center cursor-grab active:cursor-grabbing relative group z-50 touch-none"
                   >
                     <motion.img 
-                      src="/satellite.png" 
+                      src="satellite.png" 
                       alt="Satélite" 
                       animate={{ 
                         y: [0, -15, 0],
@@ -135,7 +134,6 @@ export const Level1 = ({ onComplete, onBack }: Level1Props) => {
                         rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" }
                       }}
                       className="w-56 h-56 object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] pointer-events-none" 
-                      referrerPolicy="no-referrer"
                     />
                   </motion.div>
                 ) : (
@@ -195,10 +193,9 @@ export const Level1 = ({ onComplete, onBack }: Level1Props) => {
                   <div className="w-72 h-[520px] relative flex flex-col items-center pt-56 gap-2 overflow-visible z-20 translate-y-12">
                     {/* New Rocket Image from Attachment */}
                     <img 
-                      src="/rocket.png" 
+                      src="rocket.png" 
                       alt="Foguete de Transporte" 
                       className="absolute inset-0 w-full h-full object-contain -z-10 drop-shadow-[0_10px_30px_rgba(0,0,0,0.1)]"
-                      referrerPolicy="no-referrer"
                     />
 
                     {/* Fragment Slots - Only visible after fragmented */}

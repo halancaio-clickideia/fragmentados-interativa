@@ -46,10 +46,9 @@ export const Intro = ({ onStart }: { onStart: () => void, key?: string }) => {
       >
         <div className="relative inline-block">
           <motion.img 
-            src="/rocket.png" 
+            src="rocket.png" 
             alt="Foguete" 
             className="w-32 h-32 object-contain mb-4 mx-auto relative z-10" 
-            referrerPolicy="no-referrer"
             animate={{ 
               y: [0, -15, 0],
               rotate: [0, 2, 0]
