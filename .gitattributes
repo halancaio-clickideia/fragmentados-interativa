@@ -1,0 +1,7 @@
+# Forçar arquivos de imagem a serem tratados como binários
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary

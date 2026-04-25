@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Rocket, Shield, Network, Puzzle, Play } from 'lucide-react';
 
 export const StarField = () => {
@@ -31,6 +32,16 @@ export const StarField = () => {
 };
 
 export const Intro = ({ onStart }: { onStart: () => void, key?: string }) => {
+  const [isTakingOff, setIsTakingOff] = useState(false);
+
+  const handleStart = () => {
+    setIsTakingOff(true);
+    // Wait for the animation to finish before calling onStart
+    setTimeout(() => {
+      onStart();
+    }, 1500);
+  };
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -45,24 +56,56 @@ export const Intro = ({ onStart }: { onStart: () => void, key?: string }) => {
         className="mb-8"
       >
         <div className="relative inline-block">
-          <motion.img 
-            src="rocket.png" 
-            alt="Foguete" 
-            className="w-32 h-32 object-contain mb-4 mx-auto relative z-10" 
-            animate={{ 
+          <motion.div
+            animate={isTakingOff ? { 
+              x: 1000, 
+              y: -1000, 
+              scale: 1.5,
+              rotate: 45
+            } : { 
               y: [0, -15, 0],
-              rotate: [0, 2, 0]
+              rotate: [45, 48, 45]
             }}
-            transition={{ 
+            transition={isTakingOff ? { 
+              duration: 1.5, 
+              ease: "easeIn" 
+            } : { 
               y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
               rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" }
             }}
-          />
-          <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-accent-blue/20 rounded-full blur-2xl -z-10"
-          />
+            className="relative z-10"
+          >
+            <motion.img 
+              src="/rocket.png" 
+              alt="Foguete" 
+              className="w-32 h-32 object-contain mb-4 mx-auto" 
+              referrerPolicy="no-referrer"
+              style={{ rotate: '30deg' }}
+            />
+            
+            {/* Trail / Flame Effect during takeoff */}
+            {isTakingOff && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 1, 0], scale: [1, 2, 0.5] }}
+                transition={{ duration: 0.5, repeat: 3 }}
+                className="absolute -bottom-4 -left-4 w-12 h-24 bg-gradient-to-t from-orange-500/0 via-orange-500 to-yellow-300 blur-xl -z-10 origin-top"
+                style={{ transform: 'rotate(-135deg)' }}
+              />
+            )}
+          </motion.div>
+
+          <AnimatePresence>
+            {!isTakingOff && (
+              <motion.div
+                initial={{ opacity: 0.3, scale: 1 }}
+                animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+                exit={{ opacity: 0, scale: 2 }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-accent-blue/20 rounded-full blur-2xl -z-10"
+              />
+            )}
+          </AnimatePresence>
         </div>
         <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-2 bg-clip-text text-transparent bg-gradient-to-r from-accent-blue to-accent-purple">
           FRAGMENTADOS
@@ -75,8 +118,9 @@ export const Intro = ({ onStart }: { onStart: () => void, key?: string }) => {
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        onClick={onStart}
-        className="btn-primary flex items-center gap-2 text-lg"
+        onClick={handleStart}
+        disabled={isTakingOff}
+        className={`btn-primary flex items-center gap-2 text-lg transition-all ${isTakingOff ? 'opacity-0 scale-90 pointer-events-none' : ''}`}
       >
         <Play className="w-5 h-5 fill-current" />
         COMEÇAR
