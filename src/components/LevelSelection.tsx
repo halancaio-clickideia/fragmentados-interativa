@@ -57,7 +57,7 @@ export const LevelSelection = ({ progress, onSelectLevel }: LevelSelectionProps)
               
               <div className="flex items-center gap-6">
                 <div className={`
-                  p-5 rounded-2xl 
+                  p-5 rounded-2xl flex items-center justify-center
                   ${isUnlocked ? 'bg-accent-blue/10 text-accent-blue' : 'bg-slate-900 text-text-muted'}
                 `}>
                   <level.icon className="w-10 h-10" />

@@ -62,12 +62,13 @@ export const Level1 = ({ onComplete, onBack }: Level1Props) => {
               </p>
               
               <div className="flex flex-col md:flex-row gap-8 items-center">
-                <div className="w-full md:w-1/3 aspect-square bg-slate-100 rounded-3xl flex items-center justify-center border-2 border-dashed border-slate-300 relative overflow-hidden group shrink-0">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50" />
-                  <Rocket className="w-20 h-20 text-slate-300 group-hover:scale-110 transition-transform" />
-                  <div className="absolute inset-x-0 bottom-4 text-center">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Ilustração da Fragmentação</span>
-                  </div>
+                <div className="w-full md:w-1/2 aspect-square bg-white rounded-3xl flex items-center justify-center border-2 border-slate-100 relative overflow-hidden group shrink-0 shadow-lg">
+                  <img 
+                    src="/network_diagram.png" 
+                    alt="Diagrama de Redes" 
+                    className="w-full h-full object-cover z-10" 
+                    referrerPolicy="no-referrer" 
+                  />
                 </div>
                 <p className="flex-1 text-justify">
                   O que acontece: O computador divide o arquivo em pedaços minúsculos chamados <strong className="text-accent-blue">Pacotes</strong>. 
@@ -111,47 +112,31 @@ export const Level1 = ({ onComplete, onBack }: Level1Props) => {
                   <motion.div
                     drag
                     dragMomentum={false}
-                    dragElastic={0.1}
-                    whileDrag={{ scale: 1.1, zIndex: 100 }}
+                    dragElastic={0.05}
+                    whileDrag={{ scale: 1.05, zIndex: 100 }}
                     onDragEnd={(_, info) => {
                       // Check if dropped near rocket (right side of screen)
-                      if (info.point.x > window.innerWidth * 0.6) {
+                      // Using a slightly more robust check or simply checking x coordinate
+                      if (info.point.x > window.innerWidth * 0.55) {
                         setShowError(true);
                       }
                     }}
-                    className="w-52 h-52 bg-slate-50 border-4 border-slate-200 rounded-xl flex items-center justify-center cursor-grab active:cursor-grabbing shadow-2xl relative overflow-visible group z-50"
+                    className="w-64 h-64 flex items-center justify-center cursor-grab active:cursor-grabbing relative group z-50 touch-none"
                   >
-                    <div className="relative w-40 h-40 flex items-center justify-center">
-                      {/* Solar Panels Wings */}
-                      <div className="absolute left-[-50px] w-16 h-28 bg-sky-600 border-2 border-sky-800 rounded-sm grid grid-cols-2 grid-rows-4 gap-1 p-1 shadow-lg">
-                        {[...Array(8)].map((_, i) => <div key={i} className="bg-sky-400/40 border border-sky-300/30" />)}
-                      </div>
-                      <div className="absolute right-[-50px] w-16 h-28 bg-sky-600 border-2 border-sky-800 rounded-sm grid grid-cols-2 grid-rows-4 gap-1 p-1 shadow-lg">
-                        {[...Array(8)].map((_, i) => <div key={i} className="bg-sky-400/40 border border-sky-300/30" />)}
-                      </div>
-                      
-                      {/* Connecting Arms */}
-                      <div className="absolute w-32 h-2 bg-slate-600 z-0" />
-
-                      {/* Satellite Main Body (Gold Foil Look) */}
-                      <div className="w-20 h-20 bg-gradient-to-br from-yellow-600 via-yellow-400 to-yellow-700 border-2 border-yellow-800 rounded-lg relative z-10 shadow-xl flex items-center justify-center">
-                        <div className="absolute inset-1 border border-white/20 rounded-sm" />
-                        {/* Sensors/Details */}
-                        <div className="absolute top-2 left-2 w-3 h-3 bg-slate-800 rounded-full border border-slate-400" />
-                        <div className="absolute bottom-2 right-2 w-2 h-2 bg-red-500 animate-pulse rounded-full shadow-[0_0_5px_red]" />
-                      </div>
-
-                      {/* Parabolic Dish */}
-                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
-                        <div className="w-16 h-8 bg-slate-300 border-2 border-slate-500 rounded-t-full relative shadow-md">
-                          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 h-10 bg-slate-600" />
-                          <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-slate-400 border border-slate-600 rounded-full" />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/60 p-2 text-center rounded-b-lg">
-                      <div className="text-[10px] font-black uppercase tracking-[2px] text-white">Satélite Alpha</div>
-                    </div>
+                    <motion.img 
+                      src="/satellite.png" 
+                      alt="Satélite" 
+                      animate={{ 
+                        y: [0, -15, 0],
+                        rotate: [0, 2, 0]
+                      }}
+                      transition={{ 
+                        y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                        rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+                      }}
+                      className="w-56 h-56 object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] pointer-events-none" 
+                      referrerPolicy="no-referrer"
+                    />
                   </motion.div>
                 ) : (
                   <div className="grid grid-cols-2 gap-4">
@@ -206,42 +191,38 @@ export const Level1 = ({ onComplete, onBack }: Level1Props) => {
                   transition={{ duration: 2, ease: "easeIn" }}
                   className="relative group"
                 >
-                  {/* Rocket Body */}
-                  <div className="w-64 h-[480px] relative bg-slate-100 border-4 border-accent-blue rounded-t-[140px] rounded-b-[40px] flex flex-col items-center pt-24 gap-4 overflow-visible shadow-2xl z-20">
-                    {/* Rocket Window */}
-                    <div className="absolute top-8 w-16 h-16 rounded-full bg-slate-800 border-4 border-slate-300 flex items-center justify-center overflow-hidden shadow-inner">
-                      <div className="w-full h-full bg-gradient-to-tr from-sky-400 to-white opacity-40" />
-                    </div>
+                  {/* Rocket Container */}
+                  <div className="w-72 h-[520px] relative flex flex-col items-center pt-56 gap-2 overflow-visible z-20 translate-y-12">
+                    {/* New Rocket Image from Attachment */}
+                    <img 
+                      src="/rocket.png" 
+                      alt="Foguete de Transporte" 
+                      className="absolute inset-0 w-full h-full object-contain -z-10 drop-shadow-[0_10px_30px_rgba(0,0,0,0.1)]"
+                      referrerPolicy="no-referrer"
+                    />
 
-                    {/* Fragment Slots */}
-                    {fragments.map((frag) => (
-                      <div 
-                        key={frag.id}
-                        className={`w-20 h-20 rounded-lg border-2 flex flex-col items-center justify-center transition-all z-10
-                          ${placedFragments.includes(frag.id) ? 'bg-accent-purple border-transparent text-white font-bold shadow-lg scale-105' : 'border-accent-blue/30 bg-white/50'}
-                        `}
-                      >
-                        {placedFragments.includes(frag.id) ? (
-                          <>
-                            <span className="text-[8px] opacity-70">FRAGMENTO</span>
-                            <span className="text-lg">{frag.id}</span>
-                          </>
-                        ) : (
-                          <div className="w-8 h-8 rounded-full border-2 border-dashed border-accent-blue/20" />
-                        )}
+                    {/* Fragment Slots - Only visible after fragmented */}
+                    {isFragmented && (
+                      <div className="flex flex-col gap-1.5 z-10">
+                        {fragments.map((frag) => (
+                          <div 
+                            key={frag.id}
+                            className={`w-10 h-10 rounded-lg border flex flex-col items-center justify-center transition-all
+                              ${placedFragments.includes(frag.id) ? 'bg-accent-purple border-transparent text-white font-bold shadow-lg scale-110' : 'border-accent-blue/20 bg-white/30 backdrop-blur-sm'}
+                            `}
+                          >
+                            {placedFragments.includes(frag.id) ? (
+                              <>
+                                <span className="text-[5px] opacity-70 leading-none">FRAG</span>
+                                <span className="text-xs leading-tight">{frag.id}</span>
+                              </>
+                            ) : (
+                              <div className="w-3 h-3 rounded-full border border-dashed border-accent-blue/20" />
+                            )}
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                    
-                    <div className="mt-auto mb-10 font-black text-accent-blue text-[10px] uppercase tracking-[2px] bg-white/80 px-4 py-1 rounded-full z-10">
-                      Transporte de Dados
-                    </div>
-
-                    {/* Rocket Fins */}
-                    <div className="absolute -left-12 bottom-0 w-16 h-32 bg-accent-blue rounded-l-full rounded-t-full -z-10 border-l-4 border-t-4 border-slate-300" />
-                    <div className="absolute -right-12 bottom-0 w-16 h-32 bg-accent-blue rounded-r-full rounded-t-full -z-10 border-r-4 border-t-4 border-slate-300" />
-                    
-                    {/* Rocket Engine/Thruster */}
-                    <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-slate-800 rounded-b-xl border-x-4 border-b-4 border-slate-400" />
+                    )}
                   </div>
 
                   {/* Fire/Smoke Animation when launching */}

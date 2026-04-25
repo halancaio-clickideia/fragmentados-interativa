@@ -45,11 +45,24 @@ export const Intro = ({ onStart }: { onStart: () => void, key?: string }) => {
         className="mb-8"
       >
         <div className="relative inline-block">
-          <Rocket className="w-24 h-24 text-accent-blue mb-4 mx-auto" />
+          <motion.img 
+            src="/rocket.png" 
+            alt="Foguete" 
+            className="w-32 h-32 object-contain mb-4 mx-auto relative z-10" 
+            referrerPolicy="no-referrer"
+            animate={{ 
+              y: [0, -15, 0],
+              rotate: [0, 2, 0]
+            }}
+            transition={{ 
+              y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+            }}
+          />
           <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="absolute -top-2 -right-2 w-8 h-8 bg-accent-blue rounded-full blur-xl"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-accent-blue/20 rounded-full blur-2xl -z-10"
           />
         </div>
         <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-2 bg-clip-text text-transparent bg-gradient-to-r from-accent-blue to-accent-purple">
