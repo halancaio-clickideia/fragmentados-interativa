@@ -138,12 +138,13 @@ export const Explanation = ({ onNext }: { onNext: () => void, key?: string }) =>
       className="glass-panel max-w-3xl p-8 md:p-10 z-10 mx-4"
     >
       <div className="flex flex-col md:flex-row gap-8 items-center mb-6">
-        <div className="w-full md:w-1/3 aspect-square bg-slate-100 rounded-3xl flex items-center justify-center border-2 border-dashed border-slate-300 relative overflow-hidden group">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50" />
-          <Network className="w-20 h-20 text-slate-300 group-hover:scale-110 transition-transform" />
-          <div className="absolute inset-x-0 bottom-4 text-center">
-            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Ilustração da Mensagem Fragmentada</span>
-          </div>
+        <div className="w-full md:w-1/3 aspect-square bg-white rounded-3xl flex items-center justify-center border-2 border-slate-100 relative overflow-hidden group shadow-lg">
+          <img 
+            src="/incident.png" 
+            alt="Ilustração da Mensagem Fragmentada" 
+            className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform"
+            referrerPolicy="no-referrer"
+          />
         </div>
         <div className="flex-1">
           <h2 className="text-3xl font-bold mb-4 text-accent-blue uppercase tracking-wider">Relatório de Incidente</h2>
