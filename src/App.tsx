@@ -112,7 +112,7 @@ export default function App() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-0 right-0 text-center">
-                  <span className="text-[10px] font-black uppercase tracking-[3px] text-white drop-shadow-md">Ilustração do Resgate Final</span>
+                  <span className="text-[10px] font-black uppercase tracking-[3px] text-white drop-shadow-md"></span>
                 </div>
               </div>
 
