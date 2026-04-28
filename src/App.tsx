@@ -62,26 +62,15 @@ export default function App() {
               progress={progress} 
               onSelectLevel={(level) => setGameState(level as GameState)} 
             />
-            <div className="flex gap-4 mt-12">
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                whileHover={{ opacity: 1 }}
-                onClick={() => setGameState('final')}
-                className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[3px] text-slate-500 hover:text-accent-blue transition-colors"
-              >
-                <Trophy className="w-3 h-3" /> Pular para o Final
-              </motion.button>
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                whileHover={{ opacity: 1 }}
-                onClick={resetGame}
-                className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[3px] text-slate-500 hover:text-danger transition-colors"
-              >
-                <RefreshCcw className="w-3 h-3" /> Reiniciar Progresso
-              </motion.button>
-            </div>
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              whileHover={{ opacity: 1 }}
+              onClick={resetGame}
+              className="mt-12 flex items-center gap-2 text-[10px] font-black uppercase tracking-[3px] text-slate-500 hover:text-danger transition-colors"
+            >
+              <RefreshCcw className="w-3 h-3" /> Reiniciar Progresso
+            </motion.button>
           </div>
         )}
 
