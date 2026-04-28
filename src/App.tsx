@@ -62,15 +62,26 @@ export default function App() {
               progress={progress} 
               onSelectLevel={(level) => setGameState(level as GameState)} 
             />
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
-              whileHover={{ opacity: 1 }}
-              onClick={resetGame}
-              className="mt-12 flex items-center gap-2 text-[10px] font-black uppercase tracking-[3px] text-slate-500 hover:text-danger transition-colors"
-            >
-              <RefreshCcw className="w-3 h-3" /> Reiniciar Progresso
-            </motion.button>
+            <div className="flex gap-4 mt-12">
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                whileHover={{ opacity: 1 }}
+                onClick={() => setGameState('final')}
+                className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[3px] text-slate-500 hover:text-accent-blue transition-colors"
+              >
+                <Trophy className="w-3 h-3" /> Pular para o Final
+              </motion.button>
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                whileHover={{ opacity: 1 }}
+                onClick={resetGame}
+                className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[3px] text-slate-500 hover:text-danger transition-colors"
+              >
+                <RefreshCcw className="w-3 h-3" /> Reiniciar Progresso
+              </motion.button>
+            </div>
           </div>
         )}
 
@@ -103,11 +114,11 @@ export default function App() {
           >
             <div className="flex flex-col md:flex-row gap-12 items-center mb-12 text-left">
               {/* Final Illustration - Smaller and side-by-side */}
-              <div className="w-full md:w-5/12 aspect-[4/3] bg-slate-100 rounded-[40px] border-2 border-dashed border-slate-300 relative overflow-hidden flex items-center justify-center group shrink-0 shadow-lg">
+              <div className="w-full md:w-5/12 aspect-[4/3] bg-white rounded-[40px] border-2 border-slate-100 relative overflow-hidden flex items-center justify-center group shrink-0 shadow-lg p-4">
                 <img 
-                  src="https://picsum.photos/seed/fragmentados-final/800/600" 
-                  alt="Ilustração final: Amigos celebrando o resgate do arquivo"
-                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+                  src="/success.png" 
+                  alt="Ilustração final: Mensagem entregue com sucesso"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
