@@ -16,6 +16,14 @@
 }
 
 @layer base {
+
+    * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  *::-webkit-scrollbar {
+    display: none;
+  }
   body {
     @apply bg-bg-deep text-text-light;
     min-height: 100vh;
