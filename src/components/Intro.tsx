@@ -136,7 +136,6 @@ export const Explanation = ({ onNext }: { onNext: () => void, key?: string }) =>
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       className="glass-panel max-w-3xl p-8 md:p-10 z-10 mx-4"
-      style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
     >
       <div className="flex flex-col md:flex-row gap-8 items-center mb-6">
         <div className="w-full md:w-1/3 aspect-square bg-white rounded-3xl flex items-center justify-center border-2 border-slate-100 relative overflow-hidden group shadow-lg">

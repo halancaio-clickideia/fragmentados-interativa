@@ -32,6 +32,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    image-rendering: -webkit-optimize-contrast;
+    font-variant-ligatures: normal;
     /* Hide scrollbar for IE, Edge and Firefox */
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -57,10 +59,12 @@
   }
 
   .glass-panel {
-    @apply bg-bg-card backdrop-blur-md border border-slate-300 rounded-3xl shadow-xl;
-    -webkit-perspective: 1000;
-    -webkit-backface-visibility: hidden;
-    transform: translate3d(0, 0, 0);
+    @apply bg-white border border-slate-300 rounded-3xl shadow-xl;
+    /* Remove transforms and blurs that cause blurriness in iframes */
+    transform: none !important;
+    backdrop-filter: none !important;
+    perspective: none !important;
+    backface-visibility: visible !important;
   }
 
   .btn-primary {
