@@ -108,7 +108,7 @@ export const FinalMessageReassembly = ({ onComplete, onBack }: FinalMessageReass
                 key={id}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-xl font-black text-accent-purple leading-tight bg-white px-6 py-3 rounded-2xl shadow-md border-2 border-accent-purple/20"
+                className="text-lg font-black text-accent-blue leading-tight bg-white px-6 py-3 rounded-2xl shadow-lg border-2 border-accent-blue"
               >
                 {FINAL_PARTS.find(p => p.id === id)?.text}
               </motion.span>

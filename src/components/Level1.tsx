@@ -263,8 +263,8 @@ export const Level1 = ({ onComplete, onBack }: Level1Props) => {
               O satélite foi fragmentado e enviado com sucesso! <br/>
               Você liberou a primeira parte da mensagem.
             </p>
-            <div className="bg-indigo-500/20 border border-indigo-500/50 p-6 rounded-2xl mb-8 inline-block">
-              <span className="text-2xl font-mono text-indigo-300">"Tô estudando redes hoje,"</span>
+            <div className="bg-white border-4 border-accent-blue p-6 rounded-2xl mb-8 inline-block shadow-xl">
+              <span className="text-2xl font-mono text-accent-blue font-bold tracking-tight">"Tô estudando redes hoje,"</span>
             </div>
             <button 
               onClick={onComplete}

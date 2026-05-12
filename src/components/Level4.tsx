@@ -326,7 +326,7 @@ export const Level4 = ({ onComplete, onBack }: Level4Props) => {
                     key={id}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-2xl font-black text-accent-purple tracking-tighter bg-white px-6 py-3 rounded-2xl shadow-md border-2 border-accent-purple/20"
+                    className="text-xl font-black text-accent-blue tracking-tight bg-white px-6 py-3 rounded-2xl shadow-lg border-2 border-accent-blue"
                   >
                     {currentChallenge.parts.find(p => p.id === id)?.original}
                   </motion.span>
@@ -366,11 +366,11 @@ export const Level4 = ({ onComplete, onBack }: Level4Props) => {
               Você regenerou todas as sequências e restaurou a integridade da rede! <br/>
               O último fragmento do Arquivo Perdido foi desbloqueado.
             </p>
-            <div className="bg-emerald-50 border-4 border-emerald-200 p-12 rounded-[48px] mb-12 inline-block shadow-2xl relative">
-              <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-8 py-2 rounded-full text-xs font-black uppercase tracking-widest">
+            <div className="bg-white border-4 border-accent-blue p-12 rounded-[48px] mb-12 inline-block shadow-xl relative">
+              <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-accent-blue text-white px-8 py-2 rounded-full text-xs font-black uppercase tracking-[3px]">
                 Fragmento Desbloqueado
               </div>
-              <p className="text-3xl md:text-4xl font-black text-emerald-700 tracking-tighter leading-tight">
+              <p className="text-3xl md:text-4xl font-black text-accent-blue tracking-tight leading-tight">
                 "passando por vários caminhos."
               </p>
             </div>

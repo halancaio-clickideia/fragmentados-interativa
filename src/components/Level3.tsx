@@ -407,9 +407,9 @@ export const Level3 = ({ onComplete, onBack }: Level3Props) => {
               Os pacotes encontraram o melhor caminho através da rede. <br/>
               Você liberou a terceira parte da mensagem.
             </p>
-            <div className="bg-indigo-50 border-4 border-indigo-200 p-8 rounded-3xl mb-8 inline-block shadow-inner">
-              <p className="text-xs uppercase tracking-widest text-indigo-400 mb-4 font-black">Parte da Mensagem Resgatada:</p>
-              <p className="text-3xl font-mono font-black text-indigo-600 tracking-tighter">"e chega no outro mesmo"</p>
+            <div className="bg-white border-4 border-accent-blue p-8 rounded-3xl mb-8 inline-block shadow-xl">
+              <p className="text-xs uppercase tracking-[3px] text-accent-blue mb-4 font-black">Parte da Mensagem Resgatada:</p>
+              <p className="text-3xl font-mono font-black text-accent-blue tracking-tight">"e chega no outro mesmo"</p>
             </div>
             <button 
               onClick={onComplete}

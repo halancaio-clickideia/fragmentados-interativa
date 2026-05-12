@@ -593,9 +593,9 @@ export const Level2 = ({ onComplete, onBack }: Level2Props) => {
             <p className="text-xl text-slate-700 mb-10 font-medium">
               Você dominou a arte da fragmentação inteligente. Os pacotes agora viajam de forma eficiente pela rede, respeitando os limites de cada caminho!
             </p>
-            <div className="bg-slate-100 p-8 rounded-3xl mb-10 border border-slate-200 shadow-inner">
-              <p className="text-xs uppercase tracking-widest text-text-muted mb-4 font-black">Parte da Mensagem Resgatada:</p>
-              <p className="text-2xl font-mono font-black text-accent-purple tracking-tighter">"é massa ver como a mensagem sai do celular"</p>
+            <div className="bg-white p-8 rounded-3xl mb-10 border-4 border-accent-blue shadow-xl">
+              <p className="text-xs uppercase tracking-[3px] text-accent-blue mb-4 font-black">Parte da Mensagem Resgatada:</p>
+              <p className="text-2xl font-mono font-black text-accent-blue tracking-tight">"é massa ver como a mensagem sai do celular"</p>
             </div>
             <button onClick={onComplete} className="btn-primary w-full shadow-xl">
               CONTINUAR PARA FASE 3
